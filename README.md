@@ -1,4 +1,4 @@
-# Vagrant::Joyent
+# vagrant-joyent Vagrant plugin
 
 vagrant-joyent is a Vagrant provider for the Joyent Cloud and SmartDatacenter
 
