@@ -47,22 +47,19 @@ module VagrantPlugins
             return nil
           end
           
-          #which IP address to bootstrap
+          # IP address to bootstrap
           bootstrap_ip_addresses = server.ips.select{ |ip| ip and not(is_loopback(ip) or is_linklocal(ip)) }
           if bootstrap_ip_addresses.count == 1
             bootstrap_ip_address = bootstrap_ip_addresses.first
           else
             bootstrap_ip_address = bootstrap_ip_addresses.find{|ip| not is_private(ip)}            
           end
-          
-          puts "SEANDEBUG: #{bootstrap_ip_address}"
-          puts "SEANDEBUG: #{server.ips[0]}"
-          
+                    
           config = machine.provider_config
           
           # Read the DNS info
           return {
-            :host => server.ips[0],
+            :host => bootstrap_ip_address,
             :port => 22,
             :private_key_path => config.ssh_private_key_path,
             :username => config.ssh_username
