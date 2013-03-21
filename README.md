@@ -1,24 +1,25 @@
 # Vagrant::Joyent
 
-TODO: Write a gem description
+vagrant-joyent is a Vagrant provider for the Joyent Cloud and SmartDatacenter
 
 ## Installation
 
-Add this line to your application's Gemfile:
+    $ git clone https://github.com/someara/vagrant-joyent/
+    $ cd vagrant-joyent
+    $ gem build vagrant-joyent.gemspec ; 
+    $ vagrant plugin install vagrant-joyent-0.1.0.gem 
 
-    gem 'vagrant-joyent'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install vagrant-joyent
 
 ## Usage
 
-TODO: Write usage instructions here
+Check out a chef-repo with a Joyent compatible Vagrantfile, then run "vagrant up"
+
+    $ git clone https://github.com/someara/vagrant-joyent-hello_world-repo 
+    $ git clone cd vagrant-joyent-hello_world-repo 
+    $ vagrant up
+    $ vagrant provision
+    $ vagrant ssh
+    $ vagrant destroy
 
 ## Contributing
 
