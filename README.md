@@ -15,7 +15,7 @@ vagrant-joyent is a Vagrant provider for the Joyent Cloud and SmartDatacenter
 Check out a chef-repo with a Joyent compatible Vagrantfile, then run "vagrant up"
 
     $ git clone https://github.com/someara/vagrant-joyent-hello_world-repo 
-    $ git clone cd vagrant-joyent-hello_world-repo 
+    $ cd vagrant-joyent-hello_world-repo 
     $ vagrant up
     $ vagrant provision
     $ vagrant ssh
