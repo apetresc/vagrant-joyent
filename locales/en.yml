@@ -1,0 +1,60 @@
+en:
+  vagrant_joyent:
+    already_created: |-
+      The machine is already created.
+    launching_instance: |-
+      Launching an instance with the following settings...
+    not_created: |-
+      Instance is not created. Please run `vagrant up` first.
+    ready: |-
+      Machine is booted and ready for use!
+    rsync_folder: |-
+      Rsyncing folder: %{hostpath} => %{guestpath}
+    terminating: |-
+      Terminating the instance...
+    waiting_for_ready: |-
+      Waiting for instance to become "ready"...
+    waiting_for_ssh: |-
+      Waiting for SSH to become available...
+
+    config:
+      joyent_username_required: |-
+        A Joyent Username must be specified via "joyent_username"
+      joyent_password_required: |-
+        A Joyent Password must be specified via "joyent_password"
+      joyent_api_url_required: |-
+        A Joyent Datacenter API endpoint must be specified via "joyent_api_url"
+      dataset_required: |-
+        A Joyent Dataset must be specified via "dataset"
+      node_name_required: |-
+        A Node Name must be specified via "node_name"
+      ssh_username_required: |-
+        An SSH username must be specified via "ssh_username"
+      ssh_private_key_path_required: |-
+        An SSH Private Key must be specified via "ssh_private_key_path"
+
+    errors:
+      fog_error: |-
+        There was an error talking to Joyent. The error message is shown
+        below:
+
+        %{message}
+      rsync_error: |-
+        There was an error when attemping to rsync a share folder.
+        Please inspect the error message below for more info.
+
+        Host path: %{hostpath}
+        Guest path: %{guestpath}
+        Error: %{stderr}
+
+    states:
+      short_not_created: |-
+        not created
+      long_not_created: |-
+        The Joyent instance is not created. Run `vagrant up` to create it.
+
+      short_running: |-
+        running
+      long_running: |-
+        The Joyent instance is running. To stop this machine, you can run
+        `vagrant halt`. To destroy the machine, you can run `vagrant destroy`.
