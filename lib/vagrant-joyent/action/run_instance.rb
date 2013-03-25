@@ -40,8 +40,6 @@ module VagrantPlugins
             }
             
             server = env[:joyent_compute].servers.create(options)
-
-            puts "SEANDEBUG: server #{server}"
             
           rescue Fog::Compute::Joyent::NotFound => e
             raise Errors::FogError, :message => e.message

@@ -83,7 +83,6 @@ module VagrantPlugins
             
             b2.use TimedProvision
             b2.use SyncFolders
-            b2.use WarnNetworks
             b2.use RunInstance
           end
         end
@@ -91,17 +90,16 @@ module VagrantPlugins
 
       # The autoload farm
       action_root = Pathname.new(File.expand_path("../action", __FILE__))
-      autoload :ConnectJoyent, action_root.join("connect_joyent") # check
-      autoload :IsCreated, action_root.join("is_created") # check?
-      autoload :MessageAlreadyCreated, action_root.join("message_already_created") # check
-      autoload :MessageNotCreated, action_root.join("message_not_created") # check
-      autoload :ReadSSHInfo, action_root.join("read_ssh_info") # check?
-      autoload :ReadState, action_root.join("read_state") # check
-      autoload :RunInstance, action_root.join("run_instance") # check
-      autoload :SyncFolders, action_root.join("sync_folders") # check
-      autoload :TimedProvision, action_root.join("timed_provision") # check
-      autoload :WarnNetworks, action_root.join("warn_networks") # check
-      autoload :TerminateInstance, action_root.join("terminate_instance") # FIXME
+      autoload :ConnectJoyent, action_root.join("connect_joyent")
+      autoload :IsCreated, action_root.join("is_created") 
+      autoload :MessageAlreadyCreated, action_root.join("message_already_created")
+      autoload :MessageNotCreated, action_root.join("message_not_created") 
+      autoload :ReadSSHInfo, action_root.join("read_ssh_info") 
+      autoload :ReadState, action_root.join("read_state") 
+      autoload :RunInstance, action_root.join("run_instance") 
+      autoload :SyncFolders, action_root.join("sync_folders") 
+      autoload :TimedProvision, action_root.join("timed_provision") 
+      autoload :TerminateInstance, action_root.join("terminate_instance") 
     end
   end
 end
