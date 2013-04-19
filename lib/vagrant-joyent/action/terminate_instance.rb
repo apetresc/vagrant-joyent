@@ -16,7 +16,6 @@ module VagrantPlugins
           # Destroy the server and remove the tracking ID
           env[:ui].info(I18n.t("vagrant_joyent.terminating"))
           server.destroy        
-          env[:machine].id = nil
 
           # Wait for server to be completely gone from invetory
           while true do
@@ -24,10 +23,13 @@ module VagrantPlugins
             env[:joyent_compute].servers.collect.each { |s|
               ids << s.id
             }
+            
             unless ids.include?(env[:machine].id) then
               break
             end
           end
+
+          env[:machine].id = nil
           
           @app.call(env)
         end
