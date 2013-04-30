@@ -23,8 +23,10 @@ en:
     config:
       joyent_username_required: |-
         A Joyent Username must be specified via "joyent_username"
-      joyent_password_required: |-
-        A Joyent Password must be specified via "joyent_password"
+      joyent_keyname_required: |-
+        A Joyent Keyname must be specified via "joyent_keyname"
+      joyent_keyfile_required: |-
+        A Joyent Keyfile must be specified via "joyent_keyfile"
       joyent_api_url_required: |-
         A Joyent Datacenter API endpoint must be specified via "joyent_api_url"
       dataset_required: |-

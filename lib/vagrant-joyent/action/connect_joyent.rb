@@ -16,14 +16,16 @@ module VagrantPlugins
         def call(env)
           
           joyent_username = env[:machine].provider_config.joyent_username
-          joyent_password = env[:machine].provider_config.joyent_password
+          joyent_keyname = env[:machine].provider_config.joyent_keyname
+          joyent_keyfile = env[:machine].provider_config.joyent_keyfile
           joyent_api_url  = env[:machine].provider_config.joyent_api_url
 
           @logger.info("Connecting to Joyent...")
           env[:joyent_compute] = Fog::Compute.new({
               :provider => 'Joyent',
               :joyent_username => joyent_username,
-              :joyent_password => joyent_password,
+              :joyent_keyname => joyent_keyname,
+              :joyent_keyfile => joyent_keyfile,
               :joyent_url => joyent_api_url
             })
 

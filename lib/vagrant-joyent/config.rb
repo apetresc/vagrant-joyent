@@ -5,7 +5,8 @@ module VagrantPlugins
   module Joyent
     class Config < Vagrant.plugin("2", :config)
       attr_accessor :joyent_username
-      attr_accessor :joyent_password
+      attr_accessor :joyent_keyname
+      attr_accessor :joyent_keyfile
       attr_accessor :joyent_api_url
       attr_accessor :dataset
       attr_accessor :flavor
@@ -15,7 +16,8 @@ module VagrantPlugins
 
       def initialize(datacenter_specific=false)
         @joyent_username    = UNSET_VALUE
-        @joyent_password    = UNSET_VALUE
+        @joyent_keyname    = UNSET_VALUE
+        @joyent_keyfile    = UNSET_VALUE
         @joyent_api_url     = UNSET_VALUE
         @dataset            = UNSET_VALUE
         @flavor             = UNSET_VALUE
@@ -31,7 +33,8 @@ module VagrantPlugins
       def finalize!
         # API
         @joyent_username = nil if @joyent_username == UNSET_VALUE
-        @joyent_password = nil if @joyent_password == UNSET_VALUE
+        @joyent_keyname = nil if @joyent_keyname == UNSET_VALUE
+        @joyent_keyfile = nil if @joyent_keyfile == UNSET_VALUE
         @joyent_api_url  = nil if @joyent_api_url  == UNSET_VALUE
 
         # Machines
@@ -48,8 +51,9 @@ module VagrantPlugins
         
         errors = []        
         errors << I18n.t("vagrant_joyent.config.joyent_username_required") if config.joyent_username.nil?
-        errors << I18n.t("vagrant_joyent.config.joyent_password_required") if config.joyent_password.nil?
         errors << I18n.t("vagrant_joyent.config.joyent_api_url_required") if config.joyent_api_url.nil?        
+        errors << I18n.t("vagrant_joyent.config.joyent_keyname_required") if config.joyent_keyname.nil?
+        errors << I18n.t("vagrant_joyent.config.joyent_keyfile_required") if config.joyent_keyfile.nil?
         errors << I18n.t("vagrant_joyent.config.dataset_required") if config.dataset.nil?
         errors << I18n.t("vagrant_joyent.config.flavor_required") if config.flavor.nil?
         errors << I18n.t("vagrant_joyent.config.node_name_required") if config.node_name.nil?
