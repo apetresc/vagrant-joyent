@@ -5,7 +5,7 @@ require 'vagrant-joyent/util/timer'
 module VagrantPlugins
   module Joyent
     module Action
-      
+
       # This runs the configured instance.
       class RunInstance
         include Vagrant::Util::Retryable
@@ -22,25 +22,25 @@ module VagrantPlugins
           # Get the configs
           dataset = env[:machine].provider_config.dataset
           flavor = env[:machine].provider_config.flavor
-          node_name = env[:machine].provider_config.node_name
-          ssh_username = env[:machine].provider_config.ssh_username
+          node_name = env[:machine].provider_config.node_name || env[:machine].name
+          keyname = env[:machine].provider_config.joyent_keyname
 
           # Launch!
           env[:ui].info(I18n.t("vagrant_joyent.launching_instance"))
           env[:ui].info(" -- Flavor: #{flavor}")
           env[:ui].info(" -- Dataset: #{dataset}")
           env[:ui].info(" -- Node name: #{node_name}")
-          env[:ui].info(" -- SSH Username: #{ssh_username}")
-          
+          env[:ui].info(" -- Key name: #{keyname}")
+
           begin
             options = {
               :name             => node_name,
               :dataset          => dataset,
               :package          => flavor
             }
-            
+
             server = env[:joyent_compute].servers.create(options)
-            
+
           rescue Fog::Compute::Joyent::NotFound => e
             raise Errors::FogError, :message => e.message
           rescue Fog::Compute::Joyent::Error => e
