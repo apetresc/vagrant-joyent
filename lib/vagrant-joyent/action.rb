@@ -11,9 +11,15 @@ module VagrantPlugins
       # This action is called to terminate the remote machine.
       def self.action_destroy
         Vagrant::Action::Builder.new.tap do |b|
-          b.use ConfigValidate
-          b.use ConnectJoyent
-          b.use TerminateInstance
+          b.use Call, DestroyConfirm do |env, b2|
+            if env[:result]
+              b2.use ConfigValidate
+              b2.use ConnectJoyent
+              b2.use TerminateInstance
+            else
+              b2.use MessageWillNotDestroy
+            end
+          end
         end
       end
 
@@ -100,6 +106,7 @@ module VagrantPlugins
       autoload :SyncFolders, action_root.join("sync_folders") 
       autoload :TimedProvision, action_root.join("timed_provision") 
       autoload :TerminateInstance, action_root.join("terminate_instance") 
+      autoload :MessageWillNotDestroy, action_root.join("message_will_not_destroy")
     end
   end
 end

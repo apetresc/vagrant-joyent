@@ -16,6 +16,9 @@ en:
       Waiting for instance to become "ready"...
     waiting_for_ssh: |-
       Waiting for SSH to become available...
+    will_not_destroy: |-
+      The instance '%{name}' will not be destroyed, since the confirmation
+      was declined.
 
     config:
       joyent_username_required: |-
