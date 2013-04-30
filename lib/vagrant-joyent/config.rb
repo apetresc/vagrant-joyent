@@ -25,11 +25,11 @@ module VagrantPlugins
         @ssh_username       = UNSET_VALUE
         @ssh_private_key_path = UNSET_VALUE
       end
-      
+
       #-------------------------------------------------------------------
       # Internal methods.
       #-------------------------------------------------------------------
-            
+
       def finalize!
         # API
         @joyent_username = nil if @joyent_username == UNSET_VALUE
@@ -48,18 +48,18 @@ module VagrantPlugins
 
       def validate(machine)
         config = self.class.new(true)
-        
-        errors = []        
+
+        errors = []
         errors << I18n.t("vagrant_joyent.config.joyent_username_required") if config.joyent_username.nil?
-        errors << I18n.t("vagrant_joyent.config.joyent_api_url_required") if config.joyent_api_url.nil?        
         errors << I18n.t("vagrant_joyent.config.joyent_keyname_required") if config.joyent_keyname.nil?
         errors << I18n.t("vagrant_joyent.config.joyent_keyfile_required") if config.joyent_keyfile.nil?
+        errors << I18n.t("vagrant_joyent.config.joyent_api_url_required") if config.joyent_api_url.nil?
         errors << I18n.t("vagrant_joyent.config.dataset_required") if config.dataset.nil?
         errors << I18n.t("vagrant_joyent.config.flavor_required") if config.flavor.nil?
         errors << I18n.t("vagrant_joyent.config.ssh_username_required") if config.ssh_username.nil?
         errors << I18n.t("vagrant_joyent.config.ssh_private_key_path_required") if config.ssh_private_key_path.nil?
         { "Joyent Provider" => errors }
       end
-    end    
+    end
   end
 end

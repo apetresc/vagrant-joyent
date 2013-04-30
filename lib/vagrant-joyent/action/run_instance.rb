@@ -5,7 +5,7 @@ require 'vagrant-joyent/util/timer'
 module VagrantPlugins
   module Joyent
     module Action
-      
+
       # This runs the configured instance.
       class RunInstance
         include Vagrant::Util::Retryable
@@ -38,9 +38,9 @@ module VagrantPlugins
               :dataset          => dataset,
               :package          => flavor
             }
-            
+
             server = env[:joyent_compute].servers.create(options)
-            
+
           rescue Fog::Compute::Joyent::NotFound => e
             raise Errors::FogError, :message => e.message
           rescue Fog::Compute::Joyent::Error => e

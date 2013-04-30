@@ -6,7 +6,7 @@ module VagrantPlugins
     module Action
       # This action connects to Joyent, verifies credentials work, and
       # puts the Joyent connection object into the `:joyent_compute` key
-      # in the environment.      
+      # in the environment.
       class ConnectJoyent
         def initialize(app, env)
           @app    = app
@@ -14,7 +14,7 @@ module VagrantPlugins
         end
 
         def call(env)
-          
+
           joyent_username = env[:machine].provider_config.joyent_username
           joyent_keyname = env[:machine].provider_config.joyent_keyname
           joyent_keyfile = env[:machine].provider_config.joyent_keyfile

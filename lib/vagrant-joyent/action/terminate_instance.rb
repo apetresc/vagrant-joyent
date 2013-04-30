@@ -31,14 +31,14 @@ module VagrantPlugins
             env[:joyent_compute].servers.collect.each { |s|
               ids << s.id
             }
-            
+
             unless ids.include?(env[:machine].id) then
               break
             end
           end
 
           env[:machine].id = nil
-          
+
           @app.call(env)
         end
       end
