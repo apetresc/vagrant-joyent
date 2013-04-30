@@ -22,16 +22,16 @@ module VagrantPlugins
           # Get the configs
           dataset = env[:machine].provider_config.dataset
           flavor = env[:machine].provider_config.flavor
-          ssh_username = env[:machine].provider_config.ssh_username
           node_name = env[:machine].provider_config.node_name || env[:machine].name
+          keyname = env[:machine].provider_config.joyent_keyname
 
           # Launch!
           env[:ui].info(I18n.t("vagrant_joyent.launching_instance"))
           env[:ui].info(" -- Flavor: #{flavor}")
           env[:ui].info(" -- Dataset: #{dataset}")
           env[:ui].info(" -- Node name: #{node_name}")
-          env[:ui].info(" -- SSH Username: #{ssh_username}")
-          
+          env[:ui].info(" -- Key name: #{keyname}")
+
           begin
             options = {
               :name             => node_name,
