@@ -22,8 +22,8 @@ module VagrantPlugins
           # Get the configs
           dataset = env[:machine].provider_config.dataset
           flavor = env[:machine].provider_config.flavor
-          node_name = env[:machine].provider_config.node_name
           ssh_username = env[:machine].provider_config.ssh_username
+          node_name = env[:machine].provider_config.node_name || env[:machine].name
 
           # Launch!
           env[:ui].info(I18n.t("vagrant_joyent.launching_instance"))

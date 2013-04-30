@@ -56,7 +56,6 @@ module VagrantPlugins
         errors << I18n.t("vagrant_joyent.config.joyent_keyfile_required") if config.joyent_keyfile.nil?
         errors << I18n.t("vagrant_joyent.config.dataset_required") if config.dataset.nil?
         errors << I18n.t("vagrant_joyent.config.flavor_required") if config.flavor.nil?
-        errors << I18n.t("vagrant_joyent.config.node_name_required") if config.node_name.nil?
         errors << I18n.t("vagrant_joyent.config.ssh_username_required") if config.ssh_username.nil?
         errors << I18n.t("vagrant_joyent.config.ssh_private_key_path_required") if config.ssh_private_key_path.nil?
         { "Joyent Provider" => errors }
