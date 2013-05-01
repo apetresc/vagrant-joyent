@@ -7,7 +7,7 @@ vagrant-joyent is a Vagrant provider for the Joyent Cloud and SmartDatacenter
     $ git clone https://github.com/someara/vagrant-joyent/
     $ cd vagrant-joyent
     $ gem build vagrant-joyent.gemspec ; 
-    $ vagrant plugin install vagrant-joyent-0.1.0.gem 
+    $ vagrant plugin install vagrant-joyent-0.2.1.gem 
     $ vagrant box add dummy ./dummy.box
 
 ## Usage
