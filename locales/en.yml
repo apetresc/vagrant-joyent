@@ -21,22 +21,18 @@ en:
       was declined.
 
     config:
-      joyent_username_required: |-
-        A Joyent Username must be specified via "joyent_username"
-      joyent_keyname_required: |-
-        A Joyent Keyname must be specified via "joyent_keyname"
-      joyent_keyfile_required: |-
-        A Joyent Keyfile must be specified via "joyent_keyfile"
-      joyent_api_url_required: |-
-        A Joyent Datacenter API endpoint must be specified via "joyent_api_url"
+      username_required: |-
+        A Joyent Username must be specified via "joyent.username"
+      keyname_required: |-
+        A Joyent Keyname must be specified via "joyent.keyname"
+      api_url_required: |-
+        A Joyent Datacenter API endpoint must be specified via "joyent.api_url"
       dataset_required: |-
-        A Joyent Dataset must be specified via "dataset"
+        A Joyent Dataset must be specified via "joyent.dataset"
       node_name_required: |-
-        A Node Name must be specified via "node_name"
+        A Node Name must be specified via "joyent.node_name"
       ssh_username_required: |-
-        An SSH username must be specified via "ssh_username"
-      ssh_private_key_path_required: |-
-        An SSH Private Key must be specified via "ssh_private_key_path"
+        An SSH username must be specified via "joyent.ssh_username"
 
     errors:
       fog_error: |-

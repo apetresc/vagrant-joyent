@@ -1,5 +1,6 @@
 require "fog"
 require "log4r"
+require 'pry'
 
 module VagrantPlugins
   module Joyent
@@ -15,20 +16,20 @@ module VagrantPlugins
 
         def call(env)
 
-          joyent_username = env[:machine].provider_config.joyent_username
-          joyent_keyname = env[:machine].provider_config.joyent_keyname
-          joyent_keyfile = env[:machine].provider_config.joyent_keyfile
-          joyent_api_url  = env[:machine].provider_config.joyent_api_url
-
+          binding.pry
+          
           @logger.info("Connecting to Joyent...")
           env[:joyent_compute] = Fog::Compute.new({
               :provider => 'Joyent',
-              :joyent_username => joyent_username,
-              :joyent_keyname => joyent_keyname,
-              :joyent_keyfile => joyent_keyfile,
-              :joyent_url => joyent_api_url
+              :joyent_username => env[:machine].provider_config.username,
+              :joyent_keyname => env[:machine].provider_config.keyname,
+              :joyent_file => env[:machine].provider_config.keyname,
+              :joyent_url => env[:machine].provider_config.api_url,
+              :ssl_verify_peer => env[:machine].provider_config.ssl_verify_peer
             })
 
+          binding.pry
+          
           @app.call(env)
         end
       end
