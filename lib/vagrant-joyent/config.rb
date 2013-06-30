@@ -5,10 +5,9 @@ require 'pry'
 module VagrantPlugins
   module Joyent
     class Config < Vagrant.plugin("2", :config)
-      attr_accessor :joyent_username
-      attr_accessor :joyent_keyname
-      attr_accessor :joyent_keyfile
-      attr_accessor :joyent_api_url
+      attr_accessor :username
+      attr_accessor :keyname
+      attr_accessor :api_url
       attr_accessor :dataset
       attr_accessor :flavor
       attr_accessor :node_name
