@@ -1,5 +1,6 @@
 #: utf-8 -*-
 require "vagrant"
+require 'pry'
 
 module VagrantPlugins
   module Joyent
@@ -13,6 +14,7 @@ module VagrantPlugins
       attr_accessor :node_name
       attr_accessor :ssh_username
       attr_accessor :ssh_private_key_path
+      attr_accessor :ssl_verify_peer
 
       def initialize(datacenter_specific=false)
         @joyent_username    = UNSET_VALUE
@@ -24,6 +26,7 @@ module VagrantPlugins
         @node_name          = UNSET_VALUE
         @ssh_username       = UNSET_VALUE
         @ssh_private_key_path = UNSET_VALUE
+        @ssl_verify_peer = UNSET_VALUE
       end
 
       #-------------------------------------------------------------------
@@ -35,8 +38,11 @@ module VagrantPlugins
         @joyent_username = nil if @joyent_username == UNSET_VALUE
         @joyent_keyname = nil if @joyent_keyname == UNSET_VALUE
         @joyent_keyfile = nil if @joyent_keyfile == UNSET_VALUE
-        @joyent_api_url  = nil if @joyent_api_url  == UNSET_VALUE
-
+        @joyent_api_url  = nil if @joyent_api_url  == UNSET_VALUE       
+        
+        # SSL
+        @ssl_verify_peer = true if @ssl_verify_peer = UNSET_VALUE
+        
         # Machines
         @dataset = nil if @dataset == UNSET_VALUE
         @flavor = "Small 1GB" if @instance_type == UNSET_VALUE
@@ -44,11 +50,12 @@ module VagrantPlugins
         @ssh_username = nil if @ssh_username == UNSET_VALUE
         @ssh_private_key_path = nil if @ssh_private_key_path == UNSET_VALUE
 
+        binding.pry 
       end
 
       def validate(machine)
         config = self.class.new(true)
-
+        
         errors = []
         errors << I18n.t("vagrant_joyent.config.joyent_username_required") if config.joyent_username.nil?
         errors << I18n.t("vagrant_joyent.config.joyent_keyname_required") if config.joyent_keyname.nil?
@@ -57,7 +64,8 @@ module VagrantPlugins
         errors << I18n.t("vagrant_joyent.config.dataset_required") if config.dataset.nil?
         errors << I18n.t("vagrant_joyent.config.flavor_required") if config.flavor.nil?
         errors << I18n.t("vagrant_joyent.config.ssh_username_required") if config.ssh_username.nil?
-        errors << I18n.t("vagrant_joyent.config.ssh_private_key_path_required") if config.ssh_private_key_path.nil?
+        errors << I18n.t("vagrant_joyent.config.ssh_private_key_path_required") if config.ssh_private_key_path.nil?     
+        
         { "Joyent Provider" => errors }
       end
     end
