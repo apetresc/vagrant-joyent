@@ -16,7 +16,7 @@ module VagrantPlugins
 
         def call(env)
 
-          binding.pry
+#          binding.pry
           
           @logger.info("Connecting to Joyent...")
           env[:joyent_compute] = Fog::Compute.new({
