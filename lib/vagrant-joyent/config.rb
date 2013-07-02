@@ -7,17 +7,18 @@ module VagrantPlugins
     class Config < Vagrant.plugin("2", :config)
       attr_accessor :username
       attr_accessor :keyname
+      attr_accessor :keyfile
       attr_accessor :api_url
       attr_accessor :dataset
       attr_accessor :flavor
       attr_accessor :node_name
       attr_accessor :ssh_username
-      attr_accessor :ssh_private_key_path
       attr_accessor :ssl_verify_peer
 
       def initialize(datacenter_specific=false)
         @username    = UNSET_VALUE
         @keyname    = UNSET_VALUE
+        @keyfile    = UNSET_VALUE
         @api_url     = UNSET_VALUE
         @ssl_verify_peer = UNSET_VALUE
         @dataset            = UNSET_VALUE
@@ -34,6 +35,7 @@ module VagrantPlugins
         # API
         @username = nil if @username == UNSET_VALUE
         @keyname = nil if @keyname == UNSET_VALUE
+        @keyfile = nil if @keyfile == UNSET_VALUE
         @api_url  = nil if @api_url  == UNSET_VALUE       
         
         # SSL
@@ -52,6 +54,7 @@ module VagrantPlugins
         errors = []
         errors << I18n.t("vagrant_joyent.config.username_required") if config.username.nil?
         errors << I18n.t("vagrant_joyent.config.keyname_required") if config.keyname.nil?
+        errors << I18n.t("vagrant_joyent.config.keyfile_required") if config.keyfile.nil?
         errors << I18n.t("vagrant_joyent.config.api_url_required") if config.api_url.nil?
         errors << I18n.t("vagrant_joyent.config.dataset_required") if config.dataset.nil?
         errors << I18n.t("vagrant_joyent.config.flavor_required") if config.flavor.nil?
