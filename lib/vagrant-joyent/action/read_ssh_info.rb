@@ -37,7 +37,7 @@ module VagrantPlugins
         
         def read_ssh_info(joyent, machine)
           return nil if machine.id.nil?
-
+          
           # Find the machine
           server = joyent.servers.get(machine.id)
           if server.nil?
@@ -61,7 +61,7 @@ module VagrantPlugins
           return {
             :host => bootstrap_ip_address,
             :port => 22,
-            :private_key_path => config.ssh_private_key_path,
+            :private_key_path => config.keyfile,
             :username => config.ssh_username
           }
         end

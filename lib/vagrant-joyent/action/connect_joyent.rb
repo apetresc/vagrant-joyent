@@ -1,6 +1,5 @@
 require "fog"
 require "log4r"
-require 'pry'
 
 module VagrantPlugins
   module Joyent
@@ -15,8 +14,6 @@ module VagrantPlugins
         end
 
         def call(env)
-
-#          binding.pry
           
           @logger.info("Connecting to Joyent...")
           env[:joyent_compute] = Fog::Compute.new({
