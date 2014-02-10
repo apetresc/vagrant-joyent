@@ -15,6 +15,7 @@ Gem::Specification.new do |s|
   s.rubyforge_project         = "vagrant-joyent"
 
   s.add_runtime_dependency "fog", "~> 1.12.1"
+  s.add_runtime_dependency "pry", "~> 0.9.12.6"
 
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec-core", "~> 2.12.2"
