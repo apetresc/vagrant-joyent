@@ -4,12 +4,17 @@ require "vagrant-joyent/version"
 Gem::Specification.new do |s|
   s.name          = "vagrant-joyent"
   s.version       = VagrantPlugins::Joyent::VERSION
+  s.licenses      = ['Apache-2.0']
   s.platform      = Gem::Platform::RUBY
   s.authors       = "Sean OMeara"
   s.email         = "someara@opscode.com"
   s.homepage      = "http://www.vagrantup.com"
   s.summary       = "Enables Vagrant to manage machines in Joyent cloud and SDC"
-  s.description   = "Enables Vagrant to manage machines in Joyent cloud and SDC"
+  s.description   = <<-EOF
+    vagrant-joyent is a Vagrant provider for various Joyent services. It enables
+    Vagrant to manage machines in the Joyent cloud using standard commands like
+    'up', 'provision', and 'halt'.
+  EOF
 
   s.required_rubygems_version = ">= 1.3.6"
   s.rubyforge_project         = "vagrant-joyent"
