@@ -1,6 +1,5 @@
 #: utf-8 -*-
 require "vagrant"
-require 'pry'
 
 module VagrantPlugins
   module Joyent
