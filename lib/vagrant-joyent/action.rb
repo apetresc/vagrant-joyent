@@ -87,7 +87,7 @@ module VagrantPlugins
               next
             end
 
-            b2.use TimedProvision
+            b2.use Provision
             b2.use SyncFolders
             b2.use RunInstance
           end
@@ -105,7 +105,6 @@ module VagrantPlugins
       autoload :ReadState, action_root.join("read_state")
       autoload :RunInstance, action_root.join("run_instance")
       autoload :SyncFolders, action_root.join("sync_folders")
-      autoload :TimedProvision, action_root.join("timed_provision")
       autoload :TerminateInstance, action_root.join("terminate_instance")
     end
   end
