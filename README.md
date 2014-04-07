@@ -4,17 +4,17 @@ vagrant-joyent is a Vagrant provider for the Joyent Cloud and SmartDatacenter
 
 ## Installation
 
-    $ git clone https://github.com/someara/vagrant-joyent/
+    $ git clone https://github.com/apetresc/vagrant-joyent/
     $ cd vagrant-joyent
-    $ gem build vagrant-joyent.gemspec ; 
-    $ vagrant plugin install vagrant-joyent-0.2.1.gem 
+    $ gem build vagrant-joyent.gemspec ;
+    $ vagrant plugin install vagrant-joyent-0.3.0.gem
     $ vagrant box add dummy ./dummy.box
 
 ## Usage
 
 Check out a chef-repo with a Joyent compatible Vagrantfile, then run "vagrant up"
 
-    $ git clone https://github.com/someara/vagrant-joyent-hello_world-repo 
+    $ git clone https://github.com/someara/vagrant-joyent-hello_world-repo
     $ cd vagrant-joyent-hello_world-repo
     $ vagrant up --provider=joyent
     $ vagrant provision

@@ -1,11 +1,11 @@
 #: utf-8 -*-
 require "vagrant"
-require 'pry'
 
 module VagrantPlugins
   module Joyent
     class Config < Vagrant.plugin("2", :config)
       attr_accessor :username
+      attr_accessor :password
       attr_accessor :keyname
       attr_accessor :keyfile
       attr_accessor :api_url
@@ -17,6 +17,7 @@ module VagrantPlugins
 
       def initialize(datacenter_specific=false)
         @username    = UNSET_VALUE
+        @password    = UNSET_VALUE
         @keyname    = UNSET_VALUE
         @keyfile    = UNSET_VALUE
         @api_url     = UNSET_VALUE
@@ -34,23 +35,24 @@ module VagrantPlugins
       def finalize!
         # API
         @username = nil if @username == UNSET_VALUE
+        @password = nil if @username == UNSET_VALUE
         @keyname = nil if @keyname == UNSET_VALUE
         @keyfile = nil if @keyfile == UNSET_VALUE
-        @api_url  = nil if @api_url  == UNSET_VALUE       
-        
+        @api_url  = nil if @api_url  == UNSET_VALUE
+
         # SSL
         @ssl_verify_peer = true if @ssl_verify_peer = UNSET_VALUE
-        
+
         # Machines
         @dataset = nil if @dataset == UNSET_VALUE
         @flavor = "Small 1GB" if @instance_type == UNSET_VALUE
         @node_name = nil if @node_name == UNSET_VALUE
         @ssh_username = nil if @ssh_username == UNSET_VALUE
       end
-      
+
       def validate(machine)
         config = self.class.new(true)
-        
+
         errors = []
         errors << I18n.t("vagrant_joyent.config.username_required") if config.username.nil?
         errors << I18n.t("vagrant_joyent.config.keyname_required") if config.keyname.nil?
@@ -59,7 +61,7 @@ module VagrantPlugins
         errors << I18n.t("vagrant_joyent.config.dataset_required") if config.dataset.nil?
         errors << I18n.t("vagrant_joyent.config.flavor_required") if config.flavor.nil?
         errors << I18n.t("vagrant_joyent.config.ssh_username_required") if config.ssh_username.nil?
-        
+
         { "Joyent Provider" => errors }
       end
     end
