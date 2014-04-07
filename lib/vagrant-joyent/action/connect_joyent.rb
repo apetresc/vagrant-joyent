@@ -22,8 +22,7 @@ module VagrantPlugins
               :joyent_password => env[:machine].provider_config.password,
               :joyent_keyname => env[:machine].provider_config.keyname,
               :joyent_keyfile => env[:machine].provider_config.keyfile,
-              :joyent_url => env[:machine].provider_config.api_url,
-              :joyent_ssl_verify_peer => env[:machine].provider_config.ssl_verify_peer
+              :joyent_url => env[:machine].provider_config.api_url
             })
 
           @app.call(env)
