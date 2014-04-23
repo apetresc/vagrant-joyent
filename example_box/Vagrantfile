@@ -1,8 +1,0 @@
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
-
-Vagrant.configure("2") do |config|
-  config.vm.provider :joyent do |joyent|
-    joyent.dataset = "bad2face-8738-11e2-ac72-0378d02f84de"
-  end
-end
