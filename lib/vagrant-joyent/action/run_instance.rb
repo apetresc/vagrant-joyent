@@ -23,7 +23,8 @@ module VagrantPlugins
           dataset = env[:machine].provider_config.dataset
           flavor = env[:machine].provider_config.flavor
           node_name = env[:machine].provider_config.node_name || env[:machine].name
-          keyname = env[:machine].provider_config.joyent_keyname
+          keyname = env[:machine].provider_config.keyname
+          networks = env[:machine].provider_config.networks
 
           # Launch!
           env[:ui].info(I18n.t("vagrant_joyent.launching_instance"))
@@ -36,7 +37,8 @@ module VagrantPlugins
             options = {
               :name             => node_name,
               :dataset          => dataset,
-              :package          => flavor
+              :package          => flavor,
+              :networks         => networks
             }
 
             server = env[:joyent_compute].servers.create(options)

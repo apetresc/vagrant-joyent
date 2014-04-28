@@ -19,10 +19,11 @@ module VagrantPlugins
           env[:joyent_compute] = Fog::Compute.new({
               :provider => 'Joyent',
               :joyent_username => env[:machine].provider_config.username,
-              :joyent_password => env[:machine].provider_config.password,
               :joyent_keyname => env[:machine].provider_config.keyname,
               :joyent_keyfile => env[:machine].provider_config.keyfile,
               :joyent_url => env[:machine].provider_config.api_url
+
+              :joyent_version => '~7.0'
             })
 
           @app.call(env)
