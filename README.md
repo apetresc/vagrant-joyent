@@ -11,8 +11,9 @@ installed with:
     $ vagrant plugin install vagrant-joyent
 
 Chances are, you'll also want to install the basebox for one of the
-Joyent images. Currently, only the [base64 13.4.0](http://wiki.joyent.com/wiki/display/jpc2/SmartMachine+Base#SmartMachineBase-13.4.0)
-image is supported. It can be installed with:
+Joyent images. Currently, only the [base64 13.4.0](http://wiki.joyent.com/wiki/display/jpc2/SmartMachine+Base#SmartMachineBase-13.4.0) image is supported.
+
+Whit vagrant 1.5+ this box can be installed with:
 
     $ vagrant box add apetresc/joyent-base64
 
