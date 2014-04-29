@@ -4,13 +4,13 @@
 Vagrant.configure("2") do |config|
   config.vm.provider :joyent do |joyent|
     # base64 1.9.0
-    joyent.dataset = "ff86eb8a-a069-11e3-ae0e-4f3c8983a91c"
+    joyent.dataset = ENV["JOYENT_DATASET_UUID"] or "ff86eb8a-a069-11e3-ae0e-4f3c8983a91c"
 
     joyent.username = ENV["JOYENT_USERNAME"]
     joyent.password = ENV["JOYENT_PASSWORD"]
     joyent.api_url  = ENV["JOYENT_API_URL"] or "https://us-east-1.api.joyentcloud.com"
 
-    joyent.flavor = "Small 1GB"
+    joyent.flavor = ENV["JOYENT_FLAVOR_NAME"] or "Small 1GB"
 
     joyent.node_name = "vagrant-joyent"
     joyent.ssh_username = "root"
