@@ -23,27 +23,54 @@ Vagrantfile to use with Joyent:
 
     $ vagrant init apetresc/joyent-base64
 
-Before launching an instance, you must configure your environment with
-your Joyent credentials. The following environment variables exist:
-
-  * `JOYENT_USERNAME` (_required_): The Joyent account to create
-    instances on behalf of.
-  * `JOYENT_SSH_PRIVATE_KEY_PATH` (_optional_): A local path to the
-    private key file corresponding to a public key associated with the
-    Joyent account. If it's not specified, you will probably be unable
-    to SSH into a newly-launched instance.
-  * `JOYENT_PASSWORD` (_optional_): The Joyent account password. Only
-    required if `JOYENT_SSH_PRIVATE_KEY_PATH` is not provided.
-  * `JOYENT_API_URL` (_optional_): The API endpoint to use. This
-    corresponds to the Joyent region the instances will be created in.
-    Defaults to `https://us-east-1.api.joyentcloud.com`.
-
-You probably want to set these in your shell's profile (`~/.bashrc`,
-`~/.zshrc`, etc.) and restart your shell.
+Change the configuration as appropriate (see "Configuration" section).
 
 To launch a new instance, use:
 
     $ vagrant up --provider=joyent
+
+## Configuration
+
+You may add Joyent-specific configuration to your Vagrantfile like this:
+
+```ruby
+    config.vm.provider :joyent do |joyent|
+      joyent.username = 'my_example_account'
+      joyent.api_url = 'https://us-east-1.api.joyentcloud.com'
+    end
+```
+
+Some variables are required, others are optional. Most of them (including the
+required one) may be set in your environment as environment variables (they are
+shown below in all caps: `LIKE_THIS`).
+
+### username
+  * _required_ (no default value)
+  *  The Joyent account to create instances on behalf of.
+
+### api_url
+  * _optional_ (default: `JOYENT_API_URL`, `SDC_URL`, or
+    "https://us-east-1.api.joyentcloud.com")
+  * Corresponds to the Joyent region the instances will be created in.
+
+### keyfile
+  * _optional_ (default: value of `JOYENT_SSH_PRIVATE_KEY_PATH` or `SDC_KEY`
+  * A local path to the private SSH key file
+    corresponding to a public key associated with the Joyent account. If it's
+    not specified, you will probably be unable to SSH into a newly-launched
+    instance.
+
+### keyname
+  * _optional_ (default: value of `SDC_KEY_ID`)
+  * The ID of the SSH key, if there is more than
+    one associated with your Joyent account. In reality, this is the SSH
+    key's fingerprint (16 octets, hexadecimal, comma-delimited:
+    xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx).
+
+### password
+  * _not recommended_ (default: `JOYENT_PASSWORD`; environment variable is
+    preferable for obvious security reasons)
+  * The Joyent account password. Only required if `keyfile` is not provided.
 
 ## Contributing
 
