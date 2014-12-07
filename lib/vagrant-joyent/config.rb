@@ -14,6 +14,7 @@ module VagrantPlugins
       attr_accessor :node_name
       attr_accessor :ssh_username
       attr_accessor :ssl_verify_peer
+      attr_accessor :boot_timeout
 
       def initialize(datacenter_specific=false)
         @username    = UNSET_VALUE
@@ -26,6 +27,7 @@ module VagrantPlugins
         @flavor             = UNSET_VALUE
         @node_name          = UNSET_VALUE
         @ssh_username       = UNSET_VALUE
+        @boot_timeout       = UNSET_VALUE
       end
 
       #-------------------------------------------------------------------
@@ -48,6 +50,7 @@ module VagrantPlugins
         @flavor = "Small 1GB" if @instance_type == UNSET_VALUE
         @node_name = nil if @node_name == UNSET_VALUE
         @ssh_username = nil if @ssh_username == UNSET_VALUE
+        @boot_timeout = nil if @boot_timeout == UNSET_VALUE
       end
 
       def validate(machine)
