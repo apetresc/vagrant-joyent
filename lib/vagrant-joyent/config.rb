@@ -11,6 +11,7 @@ module VagrantPlugins
       attr_accessor :api_url
       attr_accessor :dataset
       attr_accessor :flavor
+      attr_accessor :networks
       attr_accessor :node_name
       attr_accessor :ssh_username
       attr_accessor :ssl_verify_peer
@@ -24,6 +25,7 @@ module VagrantPlugins
         @ssl_verify_peer = UNSET_VALUE
         @dataset            = UNSET_VALUE
         @flavor             = UNSET_VALUE
+        @networks           = UNSET_VALUE
         @node_name          = UNSET_VALUE
         @ssh_username       = UNSET_VALUE
       end
@@ -46,6 +48,7 @@ module VagrantPlugins
         # Machines
         @dataset = nil if @dataset == UNSET_VALUE
         @flavor = "Small 1GB" if @instance_type == UNSET_VALUE
+        @networks = nil if @networks == UNSET_VALUE
         @node_name = nil if @node_name == UNSET_VALUE
         @ssh_username = nil if @ssh_username == UNSET_VALUE
       end

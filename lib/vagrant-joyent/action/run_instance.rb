@@ -30,6 +30,7 @@ module VagrantPlugins
           env[:ui].info(I18n.t("vagrant_joyent.launching_instance"))
           env[:ui].info(" -- Flavor: #{flavor}")
           env[:ui].info(" -- Dataset: #{dataset}")
+          env[:ui].info(" -- Networks: #{networks}")
           env[:ui].info(" -- Node name: #{node_name}")
           env[:ui].info(" -- Key name: #{keyname}")
 

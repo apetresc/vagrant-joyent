@@ -21,8 +21,7 @@ module VagrantPlugins
               :joyent_username => env[:machine].provider_config.username,
               :joyent_keyname => env[:machine].provider_config.keyname,
               :joyent_keyfile => env[:machine].provider_config.keyfile,
-              :joyent_url => env[:machine].provider_config.api_url
-
+              :joyent_url => env[:machine].provider_config.api_url,
               :joyent_version => '~7.0'
             })
 
