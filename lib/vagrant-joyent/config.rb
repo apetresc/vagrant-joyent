@@ -11,6 +11,7 @@ module VagrantPlugins
       attr_accessor :api_url
       attr_accessor :dataset
       attr_accessor :flavor
+      attr_accessor :networks
       attr_accessor :node_name
       attr_accessor :ssh_username
       attr_accessor :ssl_verify_peer
