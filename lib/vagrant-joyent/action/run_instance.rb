@@ -24,6 +24,7 @@ module VagrantPlugins
           flavor = env[:machine].provider_config.flavor
           node_name = env[:machine].provider_config.node_name || env[:machine].name
           keyname = env[:machine].provider_config.joyent_keyname
+          boot_timeout = env[:machine].provider_config.boot_timeout || 2
 
           # Launch!
           env[:ui].info(I18n.t("vagrant_joyent.launching_instance"))
@@ -59,7 +60,7 @@ module VagrantPlugins
               next if env[:interrupted]
 
               # Wait for the server to be ready
-              server.wait_for(2) { ready? }
+              server.wait_for(boot_timeout) { ready? }
             end
           end
 
