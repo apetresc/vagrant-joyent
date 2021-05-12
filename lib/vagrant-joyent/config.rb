@@ -34,20 +34,34 @@ module VagrantPlugins
 
       def finalize!
         # API
-        @username = nil if @username == UNSET_VALUE
-        @password = nil if @username == UNSET_VALUE
-        @keyname = nil if @keyname == UNSET_VALUE
-        @keyfile = nil if @keyfile == UNSET_VALUE
-        @api_url  = nil if @api_url  == UNSET_VALUE
+        if @username == UNSET_VALUE
+          @username = ENV['JOYENT_USERNAME'] || ENV['SDC_ACCOUNT'] || nil
+        end
+
+        if @keyname == UNSET_VALUE
+          @keyname = ENV['SDC_KEY_ID'] || nil
+        end
+
+        if @keyfile == UNSET_VALUE
+          @keyfile = ENV['JOYENT_SSH_PRIVATE_KEY_PATH'] || ENV['SDC_KEY'] || nil
+        end
+
+        if @password == UNSET_VALUE
+          @password = ENV['JOYENT_PASSWORD'] || nil
+        end
+
+        if @api_url == UNSET_VALUE
+          @api_url = ENV['JOYENT_API_URL'] || ENV['SDC_URL'] || 'https://us-east-1.api.joyentcloud.com'
+        end
 
         # SSL
         @ssl_verify_peer = true if @ssl_verify_peer = UNSET_VALUE
 
         # Machines
         @dataset = nil if @dataset == UNSET_VALUE
-        @flavor = "Small 1GB" if @instance_type == UNSET_VALUE
-        @node_name = nil if @node_name == UNSET_VALUE
-        @ssh_username = nil if @ssh_username == UNSET_VALUE
+        @flavor = 'Small 1GB' if @flavor == UNSET_VALUE
+        @node_name = 'vagrant-joyent' if @node_name == UNSET_VALUE
+        @ssh_username = 'root' if @ssh_username == UNSET_VALUE
       end
 
       def validate(machine)
